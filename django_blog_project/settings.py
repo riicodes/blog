@@ -29,8 +29,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'blog',
-    'user',
+    'blog.apps.BlogConfig',
+    'user.apps.UserConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -116,5 +116,8 @@ USE_TZ = True
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_REDIRECT_URL = 'blog:home'

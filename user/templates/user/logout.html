@@ -4,10 +4,8 @@
 {% block title %}Logged Out{% endblock title %}
 
 {% block content %}
-<div class="card p-3">
-	<p>
-		You have been logged out!
-		<a href="{% url 'login' %}" class="custom-link ms-4">Log In Again?</a>
-	</p>
-</div>
+    <div class="card p-3">
+        <p>You have been logged out!</p>
+        <a href="{% url 'login' %}" class="custom-link">Log In Again?</a>
+    </div>
 {% endblock %}

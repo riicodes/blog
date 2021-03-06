@@ -10,3 +10,8 @@ body {
 	text-decoration: none;
     color: #807f7f;
 }
+
+.post-link{
+	color: rgb(71, 71, 71);
+	text-decoration: none;
+}
