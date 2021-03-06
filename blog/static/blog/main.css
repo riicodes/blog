@@ -1,17 +1,28 @@
-body {
-    background-color: #feffff;
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.navbar-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 23px;
 }
 
 #sidebar {
     height: fit-content;
 }
 
-.custom-link{
-	text-decoration: none;
-    color: #807f7f;
+#sidebar ul li:hover {
+    background-color: aliceblue;
 }
 
-.post-link{
-	color: rgb(71, 71, 71);
-	text-decoration: none;
+.custom-link {
+    color: rgb(146 130 197);
+    text-decoration: none;
+}
+
+.post-link {
+    color: rgb(71, 71, 71);
+    text-decoration: none;
+}
+
+.custom-page-link {
+    text-decoration: none;
 }

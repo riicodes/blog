@@ -11,7 +11,7 @@
             {% csrf_token %}
             {{ form|crispy }}
             <div class="mt-4 d-flex align-items-center">
-                <button type="submit" class="btn btn-outline-success">Sign Up</button>
+                <button type="submit" class="btn btn-outline-secondary">Sign Up</button>
             </div>
             <div class="mt-3">
                 <small><a href="{% url 'login' %}" class="custom-link">Already Have an Account?</a></small>

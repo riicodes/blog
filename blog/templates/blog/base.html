@@ -17,9 +17,9 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #004a3a;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #835b73;">
     <div class="container-fluid">
-        <a class="navbar-brand ms-3 me-5" href="{% url 'blog:home' %}">लेख</a>
+        <a class="navbar-brand ms-3 me-5" href="{% url 'blog:home' %}"><i class="fas fa-pencil-alt fa-xs me-2"></i>riiblogs</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -33,28 +33,26 @@
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 {% if user.is_authenticated %}
-                    <li class="nav-item ms-lg-5">
-                        <a class="nav-link {% block profile %}{% endblock profile %}" href="{% url 'profile' %}">{{ user.username }}'s Profile</a>
+                    <li class="nav-item me-2">
+                        <a class="nav-link {% block profile %}{% endblock %}" href="{% url 'profile' %}">
+                            {{ user.username }}'s Profile
+                        </a>
                     </li>
-                    <li class="nav-item me-4 ms-lg-4">
-                        <a class="nav-link"
-                           href="{% url 'logout' %}">Logout</a>
+                    <li class="nav-item me-3">
+                        <a class="nav-link {% block logout %}{% endblock %}" href="{% url 'logout' %}">Logout</a>
                     </li>
                 {% else %}
-                    <li class="nav-item ms-lg-5">
-                        <a class="nav-link {% block login %}{% endblock login %}"
-                           href="{% url 'login' %}">Login</a>
+                    <li class="nav-item me-2">
+                        <a class="nav-link {% block login %}{% endblock %}" href="{% url 'login' %}">Login</a>
                     </li>
-                    <li class="nav-item me-4 ms-lg-4">
-                        <a class="nav-link {% block register %}{% endblock register %}"
-                           href="{% url 'register' %}">Register</a>
+                    <li class="nav-item me-3">
+                        <a class="nav-link {% block register %}{% endblock %}" href="{% url 'register' %}">Register</a>
                     </li>
                 {% endif %}
             </ul>
         </div>
     </div>
 </nav>
-
 <div class="container pt-3 mb-5">
     <div class="row">
         <div class="col-lg-6 offset-lg-1">
