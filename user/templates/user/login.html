@@ -1,20 +1,20 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
 
-{% block title %}Register Now!{% endblock title %}
-{% block register %}active{% endblock register %}
+{% block title %}Login{% endblock title %}
+{% block login %}active{% endblock login %}
 
 {% block content %}
     <div class="card p-3">
-        <h4 class="mb-3 text-secondary">Register</h4>
+        <h4 class="mb-3 text-secondary">Login</h4>
         <form method="POST">
             {% csrf_token %}
             {{ form|crispy }}
             <div class="mt-4 d-flex align-items-center">
-                <button type="submit" class="btn btn-outline-success">Sign Up</button>
+                <button type="submit" class="btn btn-outline-success">Sign In</button>
             </div>
             <div class="mt-3">
-                <small><a href="{% url 'login' %}" class="custom-link">Already Have an Account?</a></small>
+                <small><a href="{% url 'register' %}" class="custom-link">Don't Have an Account?</a></small>
             </div>
         </form>
     </div>

@@ -5,3 +5,8 @@ body {
 #sidebar {
     height: fit-content;
 }
+
+.custom-link{
+	text-decoration: none;
+    color: #807f7f;
+}
