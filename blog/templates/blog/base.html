@@ -19,7 +19,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #835b73;">
     <div class="container-fluid">
-        <a class="navbar-brand ms-3 me-5" href="{% url 'blog:home' %}"><i class="fas fa-pencil-alt fa-xs me-2"></i>riiblogs</a>
+        <a class="navbar-brand ms-3 me-5" href="{% url 'blog:home' %}">riiblogs</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -34,12 +34,15 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 {% if user.is_authenticated %}
                     <li class="nav-item me-2">
+                        <a class="nav-link {% block create %}{% endblock %}" href="{% url 'blog:create' %}"><i class="fas fa-plus me-2"></i>Create</a>
+                    </li>
+                    <li class="nav-item me-2">
                         <a class="nav-link {% block profile %}{% endblock %}" href="{% url 'profile' %}">
                             {{ user.username }}'s Profile
                         </a>
                     </li>
                     <li class="nav-item me-3">
-                        <a class="nav-link {% block logout %}{% endblock %}" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-power-off"></i></a>
                     </li>
                 {% else %}
                     <li class="nav-item me-2">
