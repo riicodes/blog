@@ -1,7 +1,8 @@
 {% extends "blog/base.html" %}
 
-{% block title %}Blog - Home{% endblock %}
+{% block title %}{{ view.kwargs.username }}'s Posts{% endblock %}
 {% block home %}active{% endblock %}
+
 
 {% block content %}
     {% for post in posts %}
@@ -15,7 +16,7 @@
                     <h5 class="mb-0 mt-0">
                         <a href="{% url 'blog:detail' post.id %}" class="post-link">{{ post.title }}</a>
                     </h5>
-                    <span><a href="{% url 'blog:user_posts' post.author %}" class="post-link">{{ post.author }}</a></span>
+                    <span><a href="" class="post-link">{{ post.author }}</a></span>
                 </div>
             </div>
             <div class="mt-3">
