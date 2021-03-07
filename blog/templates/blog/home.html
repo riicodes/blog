@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
+{% load markdownify %}
 
-{% block title %}Blog - Home{% endblock %}
+{% block title %}riiblogs{% endblock %}
 {% block home %}active{% endblock %}
 
 {% block content %}
@@ -19,7 +20,7 @@
                 </div>
             </div>
             <div class="mt-3">
-                {{ post.content|truncatechars:250 }}
+                {{ post.content|truncatechars:250|markdown|safe }}
             </div>
             <div class="mt-3">
                 <small class="text-muted">
