@@ -10,6 +10,7 @@ class PostList(ListView):
     template_name = 'blog/home.html'
     context_object_name = 'posts'
     ordering = '-created'
+    paginate_by = 5
 
 
 class UserPostList(ListView):
