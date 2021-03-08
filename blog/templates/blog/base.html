@@ -14,52 +14,61 @@
           crossorigin="anonymous"/>
     <link rel="stylesheet" href="{% static 'blog/main.css' %}">
     <link rel="stylesheet" href="{% static 'blog/zenburn.css' %}">
+    <link rel="icon" href=
+            "{% static 'blog/logo.png' %}"
+          type="image/x-icon">
     <title>{% block title %}Blog{% endblock %}</title>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #835b73;">
-    <div class="container-fluid">
-        <a class="navbar-brand ms-3 me-5" href="{% url 'blog:home' %}">riiblogs</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item me-2 ms-lg-5">
-                    <a class="nav-link {% block home %}{% endblock home %}" href="{% url 'blog:home' %}">Home</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                {% if user.is_authenticated %}
-                    <li class="nav-item me-2">
-                        <a class="nav-link {% block create %}{% endblock %}" href="{% url 'blog:create' %}"><i class="fas fa-plus me-2"></i>Create</a>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #835b73;">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-3 me-5" href="{% url 'blog:home' %}">riiblogs</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item me-2 ms-lg-5">
+                        <a class="nav-link {% block home %}{% endblock home %}" href="{% url 'blog:home' %}">Home</a>
                     </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link {% block profile %}{% endblock %}" href="{% url 'profile' %}">
-                            {{ user.username }}'s Profile
-                        </a>
-                    </li>
-                    <li class="nav-item me-3">
-                        <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-power-off"></i></a>
-                    </li>
-                {% else %}
-                    <li class="nav-item me-2">
-                        <a class="nav-link {% block login %}{% endblock %}" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item me-3">
-                        <a class="nav-link {% block register %}{% endblock %}" href="{% url 'register' %}">Register</a>
-                    </li>
-                {% endif %}
-            </ul>
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item me-2">
+                            <a class="nav-link {% block create %}{% endblock %}" href="{% url 'blog:create' %}"><i
+                                    class="fas fa-plus me-2"></i>Create</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link {% block profile %}{% endblock %}" href="{% url 'profile' %}">
+                                {{ user.username }}'s Profile
+                            </a>
+                        </li>
+                        <li class="nav-item me-3">
+                            <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-power-off"></i></a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item me-2">
+                            <a class="nav-link {% block login %}{% endblock %}" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item me-3">
+                            <a class="nav-link {% block register %}{% endblock %}"
+                               href="{% url 'register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<div class="container pt-3 mb-5">
+    </nav>
+</header>
+
+<main class="container pt-3 mb-5">
     <div class="row">
-        <div class="col-lg-6 offset-lg-1">
+        <section class="col-lg-6 offset-lg-1" id="main-section">
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
@@ -70,9 +79,9 @@
             {% endif %}
 
             {% block content %}{% endblock %}
-        </div>
+        </section>
 
-        <div class="col-lg-3 offset-lg-1 border rounded pt-2 pe-4 ps-4 text-muted" id="sidebar">
+        <aside class="col-lg-3 offset-lg-1 border rounded pt-2 pe-4 ps-4 text-muted" id="sidebar">
             <h5 class="text-center mb-3">Our Sidebar</h5>
             <ul style="list-style:none" class="p-1">
                 <li class="border rounded p-1 ps-2">News</li>
@@ -80,9 +89,9 @@
                 <li class="border rounded p-1 ps-2">Sports</li>
                 <li class="border rounded p-1 ps-2">Announcements</li>
             </ul>
-        </div>
+        </aside>
     </div>
-</div>
+</main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
