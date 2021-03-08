@@ -1,5 +1,5 @@
-## Django Blog Project!
-A django blog with django with features:
+## Django Blog Project
+*A django blog project with following features:*
 
 - *user registration and authentication*
 - *create, update, delete posts(CRUD)*
