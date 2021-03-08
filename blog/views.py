@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from .models import Post
-
+from .models import Post, Comment
+from .forms import CommentForm
 
 class PostList(ListView):
     model = Post
@@ -62,3 +62,20 @@ class PostDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if post.author == self.request.user:
             return True
         return False
+
+
+def add_comment(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            return redirect('blog:detail', pk=post.pk)
+
+    else:
+        form = CommentForm()
+    return render(request, 'blog/add_comments.html', {'form': form})
+
