@@ -59,6 +59,12 @@
                                 <span><a href="{% url 'blog:user_posts' comment.author %}"
                                          class="post-link">{{ comment.author }}</a></span>
                             </div>
+                            {% if comment.author == user %}
+                                <div class="col-3 text-end">
+                                    <a href="{% url 'blog:remove_comment' comment.id %}" class="me-2 text-danger"><i
+                                            class="fas fa-trash"></i></a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -70,6 +76,7 @@
                         {{ comment.posted_date|date:'g:i a' }} &#183; {{ comment.posted_date|date:'j M y' }}
                     </small>
                 </div>
+
                 <hr>
             {% empty %}
                 <p><em>No comments</em></p>

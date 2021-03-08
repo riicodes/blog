@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from .models import Post, Comment
 from .forms import CommentForm
+
 
 class PostList(ListView):
     model = Post
@@ -64,6 +66,7 @@ class PostDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
+@login_required
 def add_comment(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
@@ -79,3 +82,8 @@ def add_comment(request, pk):
         form = CommentForm()
     return render(request, 'blog/add_comments.html', {'form': form})
 
+
+def remove_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk, author=request.user)
+    comment.delete()
+    return redirect('blog:detail', pk=comment.post.pk)
