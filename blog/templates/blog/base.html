@@ -63,7 +63,7 @@
 
 <main class="container pt-3 mb-5">
     <div class="row">
-        <section class="col-lg-6 offset-lg-1" id="main-section">
+        <section class="col-lg-8 offset-lg-2" id="main-section">
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
@@ -75,16 +75,6 @@
 
             {% block content %}{% endblock %}
         </section>
-
-        <aside class="col-lg-3 offset-lg-1 border rounded pt-2 pe-4 ps-4 text-muted" id="sidebar">
-            <h5 class="text-center mb-3">Our Sidebar</h5>
-            <ul style="list-style:none" class="p-1">
-                <li class="border rounded p-1 ps-2">News</li>
-                <li class="border rounded p-1 ps-2">Music</li>
-                <li class="border rounded p-1 ps-2">Sports</li>
-                <li class="border rounded p-1 ps-2">Announcements</li>
-            </ul>
-        </aside>
     </div>
 </main>
 
